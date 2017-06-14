@@ -5,10 +5,23 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+
+import json  ##处理json的包
+import random  # 随机选择
+from .useragent import agents  # 导入前面的
+from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware  # UserAegent中间件
 from scrapy import signals
 
 
-class LiepSpiderMiddleware(object):
+class UserAgentmiddleware(UserAgentMiddleware):
+    def process_request(self, request, spider):
+        agent = random.choice(agents)
+        request.headers["User-Agent"] = agent
+
+
+
+
+class LpSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.

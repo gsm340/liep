@@ -8,18 +8,22 @@
 import scrapy
 
 
-class LiepItem(scrapy.Item):
+class LpItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     #职位名称
     title = scrapy.Field()
-    #职位地址
-    addr = scrapy.Field()
+    #工作地点
+    area = scrapy.Field()
     #学历要求
     edu = scrapy.Field()
     #工作经验
-    yex = scrapy.Field()
+    exp = scrapy.Field()
     #薪资待遇
-    pay = scrapy.Field()
-
-
+    salary = scrapy.Field()
+    #技术类型
+    stype = scrapy.Field()
+    #公司名称
+    comname = scrapy.Field()
+    #福利关键词
+    welfarekey = scrapy.Field()

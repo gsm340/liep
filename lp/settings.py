@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for liep project
+# Scrapy settings for lp project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,17 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'liep'
+BOT_NAME = 'lp'
 
-SPIDER_MODULES = ['liep.spiders']
-NEWSPIDER_MODULE = 'liep.spiders'
+SPIDER_MODULES = ['lp.spiders']
+NEWSPIDER_MODULE = 'lp.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'liep (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -47,14 +47,15 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'liep.middlewares.LiepSpiderMiddleware': 543,
+#    'lp.middlewares.LpSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'liep.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+#    'lp.middlewares.MyCustomDownloaderMiddleware': 543,
+     'lp.middlewares.UserAgentmiddleware': 400
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -65,8 +66,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-#    'liep.pipelines.LiepPipeline': 300,
-     'liep.mysqlpipelines.pipelines.LiepPipeline': 1,
+#    'lp.pipelines.LpPipeline': 300,
+    'lp.mysqlpipelines.pipelines.LpPipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -95,3 +96,14 @@ MYSQL_USER = 'root'
 MYSQL_PASSWORD = '123456'
 MYSQL_PORT = '3306'
 MYSQL_DB = 'test'
+
+DOWNLOAD_DELAY=3
+
+PROXIES = [
+    {'ip_port': '111.11.228.75:80', 'user_pass': ''},
+    {'ip_port': '120.198.243.22:80', 'user_pass': ''},
+    {'ip_port': '111.8.60.9:8123', 'user_pass': ''},
+    {'ip_port': '101.71.27.120:80', 'user_pass': ''},
+    {'ip_port': '122.96.59.104:80', 'user_pass': ''},
+    {'ip_port': '122.224.249.122:8088', 'user_pass': ''},
+]
